@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'haml-rails', '~> 1.0'
 gem 'jbuilder', '~> 2.5'
 gem 'json'
 gem 'puma', '~> 3.7'
