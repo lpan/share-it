@@ -13,17 +13,17 @@
 ActiveRecord::Schema.define(version: 20170909230806) do
 
   create_table "events", force: :cascade do |t|
-    t.string "summary"
+    t.string "summary", null: false
     t.string "description"
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "time_slots", force: :cascade do |t|
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer "event_id"
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.integer "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
