@@ -5,6 +5,7 @@
     %title Shareit
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
+    = javascript_pack_tag "elm_root"
   %body
+    %div#root
     = yield
