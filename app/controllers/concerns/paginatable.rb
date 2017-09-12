@@ -1,24 +1,26 @@
 module Paginatable
   extend ActiveSupport::Concern
 
-  protected
-
   def render_with_pagination(list:)
-    render json: list, meta: pagination_info(total_count: list.length)
-  end
-
-  def offset
-    params[:offset] || OFFSET
-  end
-
-  def limit
-    params[:limit] || LIMIT
+    render json: paginate(list), meta: pagination_info(total_count: list.length)
   end
 
   private
 
   LIMIT = 25
   OFFSET = 0
+
+  def offset
+    (params[:offset] || OFFSET).to_i
+  end
+
+  def limit
+    (params[:limit] || LIMIT).to_i
+  end
+
+  def paginate(list)
+    list.offset(offset).limit(limit)
+  end
 
   def pagination_info(total_count:)
     {
