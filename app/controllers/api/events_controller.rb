@@ -2,7 +2,7 @@ class Api::EventsController < ApiController
   include Paginatable
 
   def index
-    render json: events
+    render_with_pagination list: events
   end
 
   def show
@@ -12,7 +12,7 @@ class Api::EventsController < ApiController
   private
 
   def events
-    Event
+    @events ||= Event
       .where(user_id: params[:user_id])
       .includes(:time_slots)
       .order(created_at: :desc)
