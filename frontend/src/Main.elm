@@ -4,8 +4,7 @@ import Html exposing (..)
 import Navigation exposing (Location)
 import Routing exposing (parseLocation)
 import View exposing (view)
-import Models exposing (Model, Route)
-import Msgs exposing (Msg)
+import Types exposing (Model, Route, Msg(..))
 
 
 initModel : Route -> Model
@@ -13,14 +12,15 @@ initModel route =
     { route = route
     }
 
+
 init : Location -> ( Model, Cmd Msg )
 init location =
     let
         currentRoute =
             parseLocation location
-
     in
         ( initModel currentRoute, Cmd.none )
+
 
 
 -- UPDATE
@@ -29,11 +29,10 @@ init location =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Msgs.OnLocationChange location ->
+        OnLocationChange location ->
             let
                 newRoute =
                     parseLocation location
-
             in
                 ( { model | route = newRoute }, Cmd.none )
 
@@ -44,7 +43,7 @@ update msg model =
 
 main : Program Never Model Msg
 main =
-    Navigation.program Msgs.OnLocationChange
+    Navigation.program OnLocationChange
         { init = init
         , view = view
         , update = update

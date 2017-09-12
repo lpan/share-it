@@ -1,8 +1,7 @@
 module View exposing (..)
 
 import Html exposing (..)
-import Models exposing (Model, Route(..))
-import Msgs exposing (Msg)
+import Types exposing (Model, Route(..), Msg)
 import Page.Home as Home
 
 
