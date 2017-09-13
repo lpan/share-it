@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'bootstrap', '~> 4.0.0.beta'
 gem 'haml-rails', '~> 1.0'
 gem 'json'
 gem 'puma', '~> 3.7'
