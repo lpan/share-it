@@ -12,11 +12,9 @@ class Api::EventsController < ApiController
   private
 
   def events
-    @events ||= Event
+    Event
       .where(user_id: params[:user_id])
       .includes(:time_slots)
       .order(created_at: :desc)
-      .limit(limit)
-      .offset(offset)
   end
 end
