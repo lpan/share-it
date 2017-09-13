@@ -1,4 +1,4 @@
-import Elm from './Main'
+import Elm from './src/Main'
 
 document.addEventListener('DOMContentLoaded', () => {
   const target = document.getElementById('root')
