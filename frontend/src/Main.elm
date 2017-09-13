@@ -1,16 +1,13 @@
 module Main exposing (..)
 
-import Html exposing (..)
 import Navigation exposing (Location)
 import Routing exposing (parseLocation)
 import View exposing (view)
-import Types exposing (Model, Route, Msg(..))
+import Model exposing (Model, initModel, Route, Msg(..))
+import Page.SignUp as SignUp
 
 
-initModel : Route -> Model
-initModel route =
-    { route = route
-    }
+-- INIT
 
 
 init : Location -> ( Model, Cmd Msg )
@@ -22,9 +19,7 @@ init location =
         ( initModel currentRoute, Cmd.none )
 
 
-
 -- UPDATE
-
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -35,6 +30,13 @@ update msg model =
                     parseLocation location
             in
                 ( { model | route = newRoute }, Cmd.none )
+
+        SignUpMsg subMsg ->
+            let
+                newSignUp =
+                    SignUp.update subMsg model.signUp
+            in
+                ( { model | signUp = newSignUp }, Cmd.none )
 
 
 

@@ -1,7 +1,7 @@
 module Routing exposing (..)
 
 import Navigation exposing (Location)
-import Types exposing (Route(..))
+import Model exposing (Route(..))
 import UrlParser exposing (..)
 
 
@@ -9,6 +9,7 @@ matchers : Parser (Route -> a) a
 matchers =
     oneOf
         [ map HomeRoute top
+        , map SignUpRoute (s "signup")
         ]
 
 
